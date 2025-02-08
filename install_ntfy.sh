@@ -21,7 +21,12 @@ upgradable_packages=$(apt list --upgradable 2>/dev/null | grep 'upgradable' | aw
 
 if [ -n "$upgradable_packages" ]; then
     # Send notification using NTFY
-    curl -s -H "Title: Updates found on $hostname" -d "These new package updates are available on $hostname: $upgradable_packages" http://202.61.202.212:6741/qykbe_ntfy > /dev/null
+    curl -s \
+  --form-string "token=ayikap9cka7vda9d7vmz81gu8gqvvv" \
+  --form-string "user=uj2d5p4b6dh5a7sx18rtqcv8chw4gu" \
+  --form-string "title=Updates found on $hostname" \
+  --form-string "message=These new package updates are available on $hostname: $upgradable_packages" \
+  https://api.pushover.net/1/messages.json > /dev/null
 fi
 EOF
 
