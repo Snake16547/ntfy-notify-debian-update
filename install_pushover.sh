@@ -20,7 +20,7 @@ hostname=$(hostname)
 upgradable_packages=$(apt list --upgradable 2>/dev/null | grep 'upgradable' | awk -F/ '{print $1}')
 
 if [ -n "$upgradable_packages" ]; then
-    # Send notification using NTFY
+    # Send notification using Pushover
     curl -s \
   --form-string "token=ayikap9cka7vda9d7vmz81gu8gqvvv" \
   --form-string "user=uj2d5p4b6dh5a7sx18rtqcv8chw4gu" \
